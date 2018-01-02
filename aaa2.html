@@ -1,0 +1,28 @@
+<html>
+<header>
+    <title>gst</title>
+    <style>
+            body{
+                text-align: center;
+            }
+            </style>
+</header>
+<body>     
+      search items<input type="search" name="item_search"><br><br>
+    <form method="post" action="select *from product where product_name="item_search"">
+            <?php
+            mysql_connect("mysql.myhost.com", "gst", "gst") or die (mysql_error ());
+            mysql_select_db("mydatabase") or die(mysql_error());
+            $strSQL = "SELECT * FROM prouct where product_name="p_name";
+            $rs = mysql_query($strSQL);
+            while($row = mysql_fetch_array($rs)) {
+              echo $row['product_name'] . " " . $row['product_code']" . $row['product_qty'] . " " . $row['product_price'] . " " . $row['product_gst'];
+        
+              }
+        
+            mysql_close();
+            ?> 
+        <input type="submit" value="save" >
+    </form>
+    </body>
+</html>
